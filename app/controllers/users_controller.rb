@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
 
   def send_order_mail
-    binding.pry
     @user = User.new
     @email = params[:user]["email"]
 
