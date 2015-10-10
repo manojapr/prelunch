@@ -24,4 +24,28 @@ SampleApp::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :sendmail
+
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
+  user_name:            'manoj.pr247@gmail.com',
+  password:             'Beresponsible1',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+
+# ActionMailer::Base.smtp_settings = {
+#   :address        => 'smtp.gmail.com',
+#   :domain         => 'mail.google.com',
+#   :port           => 587,
+#   :user_name      => 'manoj.pr247@gmail.com',
+#   :password       => 'Beresponsible1',
+#   :authentication => :plain,
+#   :enable_starttls_auto => true
+# }
 end

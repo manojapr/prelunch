@@ -4,6 +4,17 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
+
+  def send_order_mail
+    binding.pry
+    @user = User.new
+    @email = params[:user]["email"]
+
+    SignupMailer.signup_email(@email).deliver()
+    flash[:notice] = "email has been sent."
+    redirect_to root_path
+  end
+
   def index
     @users = User.paginate(page: params[:page])
   end

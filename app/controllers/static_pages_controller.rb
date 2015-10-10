@@ -15,4 +15,13 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def send_order_mail
+    @user = Order.find(params[:id])
+
+    SignupMailer.signup_email(@user).deliver()
+    flash[:notice] = "email has been sent."
+    redirect_to static_pages_path
+  end
+
 end
